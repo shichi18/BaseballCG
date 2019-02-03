@@ -1,0 +1,64 @@
+8c8
+< MQO_MODEL	g_mqoModel1, g_mqoModel2;		// MQOモデル
+---
+> MQO_MODEL	g_mqoModel1, g_mqoModel2,g_mqoModel3;		// MQOモデル
+13c13
+< extern GLfloat angle; 					// 角度
+---
+> extern GLfloat angle,angle_x; 					// 角度
+27,28d26
+< void DispModel();
+< void LoadmqoModel();
+35,36d32
+< 	LoadmqoModel();
+< 
+37a34,41
+> 	/****************************************************************************************************************/
+> 	/* 表示するオブジェクトの読み込み */
+> 	//g_mqoModel = mqoCreateModel("meta_data/konan.mqo",1.0);
+> //	g_mqoModel1 = mqoCreateModel("meta_data/zentai.mqo",1.0);
+> //	g_mqoModel1 = mqoCreateModel("meta_data/tachikoma.mqo",1.0);
+> 	g_mqoModel1 = mqoCreateModel("meta_data/re1.mqo",1.0);
+> 	//g_mqoModel3 = mqoCreateModel("meta_data/iei.mqo",1.0);
+> 	/****************************************************************************************************************/
+53,54c57,58
+< 	double zNear = 0.2;
+< 	double zFar = 10000.0;
+---
+> 	double zNear = 1.2;
+> 	double zFar = 100000.0;
+83c87,97
+< 	DispModel();
+---
+> 	/* オブジェクト位置の設定 */
+> 	glRotated(angle_x,1.0,0.0,0.0);	
+> 
+>   glRotated(angle, vectorX, vectorY, vectorZ);		//回転
+> 	glTranslated(position_x, -position_y, -position_z);  //移動
+>   
+> 
+> 	/* MQOモデルのコール */
+> 	mqoCallModel(g_mqoModel1);
+> 	glTranslated(+200.0, 0.0, 0.0); //z方向に-10移動
+> 	mqoCallModel(g_mqoModel2);	
+101c115,124
+< 	DispModel();
+---
+> 	/* オブジェクト位置の設定 */
+> 	glRotated(angle_x,1.0,0.0,0.0);	
+> 
+>   glRotated(angle, vectorX, vectorY, vectorZ);		//回転
+> 	glTranslated(position_x, -position_y, -position_z);	//移動
+>   
+> 	/* MQOモデルのコール */
+> 	mqoCallModel(g_mqoModel1);
+> 	glTranslated(+200.0, 0.0, -100.0);	//z方向に-10移動
+> 	mqoCallModel(g_mqoModel2);	
+127,129c150,152
+< GLfloat light0_ambient[]  = {1.0f, 1.0f, 1.0f, 1.0f}; //環境光　Red Green Blue 透明度
+< GLfloat light0_diffuse[]  = {1.0f, 1.0f, 1.0f, 1.0f}; //散乱反射光
+< GLfloat light0_specular[] = {1.0f, 1.0f, 1.0f, 1.0f}; //鏡面反射光
+---
+> GLfloat light0_ambient[]  = {1.0f, 1.0f, 1.0f, 1.0f};
+> GLfloat light0_diffuse[]  = {1.0f, 1.0f, 1.0f, 1.0f};
+> GLfloat light0_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};

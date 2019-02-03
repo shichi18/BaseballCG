@@ -1,0 +1,57 @@
+#include <windows.h>
+#include "Dxlib.h"
+#include "GLMetaseq.h" // メタセコイアローダ
+#include "resource.h"
+
+extern double position_x, position_y, position_z; //座標
+extern float angle; 					// 角度
+
+
+// 以下で自動的に動く様子を描く
+// +=　の増減幅を増やすと速くなり、減らすと遅くなる
+// cornerというのは曲がり角。ある条件に達したときに、
+// 別の条件に変更する。
+void route(){
+	static int corner = 0;
+	if(corner == 0){
+		position_z += 5.0;
+		PlaySound("Notify.wav", NULL, SND_ASYNC);
+		if(position_z > 200)
+			corner++;
+
+	}
+	if(corner == 1){
+		angle = 90;
+		position_x += 5.0;
+		if(position_x > 200)
+			corner++;
+	}
+	if(corner == 2){
+		angle = -90;
+		position_x -= 5.0;
+	}
+}
+
+void mouse(){
+
+}
+
+
+void keyboard(int command){
+
+	switch (command)
+	{
+	case CMD_KEY_UP:
+		position_z += 10.0;
+		break;
+	case CMD_KEY_DOWN:
+		position_z -= 10.0;
+		break;
+	case CMD_KEY_LEFT:
+		position_x -= 10.0;
+		break;
+	case CMD_KEY_RIGHT:
+		position_x += 10.0;
+		break;
+	}
+}
