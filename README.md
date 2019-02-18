@@ -1,9 +1,15 @@
 # BaseballCG
+
 Title of the work is BaseballCG.  
 This is a programming work made in the university class.
 
-# Dependency
+## Dependency
 Used Library and Programming language.  
 Library：OpenGL  
 Programming Langage：C++  
 
+## Setup
+VisualStudio 2017
+
+## LICENCE  
+[MIT](https://github.com/shichi18/BaseballCG/blob/master/LICENSE)
