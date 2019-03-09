@@ -10,6 +10,3 @@ Programming Langage：C++
 
 ## Setup
 VisualStudio 2017
-
-## LICENCE  
-[MIT](https://github.com/shichi18/BaseballCG/blob/master/LICENSE)
